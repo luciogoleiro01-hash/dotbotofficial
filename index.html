@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>.bot! — Autonomia Operacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mobileOverlay">
+  <div class="mobile-overlay-bg"></div>
+  <div class="mobile-overlay-tint"></div>
+  <button class="mobile-close-btn" id="mobileClose" aria-label="Fechar menu"></button>
+  <div class="mobile-menu-inner">
+    <a href="#features">
+      <span class="link-num">01</span>
+      <span class="link-inner">Recursos</span>
+      <span class="link-hover-line"></span>
+    </a>
+    <a href="#arch">
+      <span class="link-num">02</span>
+      <span class="link-inner">Como funciona</span>
+      <span class="link-hover-line"></span>
+    </a>
+    <a href="#pricing">
+      <span class="link-num">03</span>
+      <span class="link-inner">Planos</span>
+      <span class="link-hover-line"></span>
+    </a>
+    <div class="mobile-menu-cta">
+      <a href="#" class="btn-primary" style="font-size:.8rem;padding:15px 32px;border-radius:4px;width:fit-content;">
+        Ativar agora
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <span class="mobile-menu-note">Sem contratos anuais</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+        viewBox="0 0 18333.03 8984.62"
+        style="width:72px;height:auto;display:block;shape-rendering:geometricPrecision;fill-rule:evenodd;clip-rule:evenodd">
+        <path fill="#FAFAFA" fill-rule="nonzero"
+          d="M9896.38 5540.94c-20.94,94.59 -207.9,238.21 -295.79,238.21l-1029.67 0c-101.14,0 -213.59,-158.72 -196,-238.21l255.31 -1152.06c20.97,-94.6 207.92,-238.2 295.8,-238.2l1029.67 0c101.15,0 213.61,158.71 195.99,238.2l-255.31 1152.06zm-2635.1 148.64c-85.29,407.26 -61.71,514.85 132.67,760.75l145.8 184.42c164.01,207.47 295.52,276.63 695.09,276.63l1198.72 0c399.58,0 560.07,-69.16 811,-276.63l223.05 -184.42c297.38,-245.9 366.03,-353.49 451.32,-760.75l288.1 -1375.45c85.28,-407.24 61.72,-514.81 -132.68,-760.72l-145.79 -184.42c-164,-207.46 -295.53,-276.63 -695.11,-276.63l-1198.72 0c-399.57,0 -560.04,69.17 -810.98,276.63l-223.04 184.42c-297.4,245.91 -366.05,353.48 -451.34,760.72l-288.09 1375.45zm4605.66 -2017.73l-391.32 1814.86c-124.75,578.61 -165.07,555.87 237.93,1090.21 86.41,114.57 172.46,260.36 295.03,282.2 7.91,1.4 44.49,13.19 52.67,13.18l1306.2 -3.41c78.9,0 114.97,-19.33 180.46,-84.83l746.9 -743.42c187.61,-187.61 229.33,-261.49 58.08,-261.49l-1448.72 0c-289.72,0 -268.58,1.68 -209.86,-278.71l281.03 -1341.77 1082.52 0.43c176.52,0 237.37,-57.64 348.1,-168.37l610.52 -684.64c153.02,-161.04 196.49,-220.35 60.11,-221.28l-1873.65 -12.73 333.5 -1640.23c35.3,-131.79 -26.42,-157.02 -126.45,-106.82l-793.51 506.68c-444.12,256.42 -412.07,348.84 -527.01,777.82l-222.52 1062.31zm-9035.59 2389.68c-13.73,60.88 -22.36,203.94 8.82,259.38 136.51,242.56 395.94,505.84 474.68,522.73 41.18,8.83 82.19,23.67 124.69,23.64l2188.16 -1.9c124.91,-0.11 255.05,-139.44 447.43,-277.96l233.89 -168.42c230.06,-165.65 282.17,-219.4 321.48,-376.61 165.59,-662.74 318.34,-1381.28 456.47,-2050.02 34.7,-168.08 -32.94,-223.57 -178.14,-387.64l-252.79 -285.6c-220.96,-249.64 -247.4,-241.08 -700.09,-236.86l-677.65 6.36c-208.86,1.94 -598.4,2.46 -592.16,-25.37l366.7 -1635.84c23.55,-87.91 -11.61,-134.66 -105.35,-134.66l-898.62 -4.14c-114.11,0 -139.31,16.34 -168.84,126.53l-1048.68 4646.36zm1630.3 -1887.97c369.46,-1.37 810.14,-1.72 1180.88,-1.72 188.92,0 231.67,185.68 206.28,294.95l-267.63 1151.57c-21.96,94.56 -216.5,136.09 -266.05,137.19l-1037.9 23.57c-78.64,1.77 -195.07,-64.59 -171.65,-163.67 29.62,-125.29 319.66,-1441.79 356.07,-1441.89zm12854.88 -2563.38c51.75,-236.53 23.89,-322.18 -263.41,-322.18l-833.6 0 -887.71 3900.66c-48.97,215.22 23.66,261.23 232.63,261.23l626.96 0c200.26,0 294.09,-42.05 342.05,-261.23l783.07 -3578.48zm-2079.64 4311c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43zm-13847.83 0c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43z"/>
+      </svg>
+    </a>
+    <div class="nav-right">
+      <a href="#features" class="nav-link">Recursos</a>
+      <a href="#arch" class="nav-link">Como funciona</a>
+      <a href="#pricing" class="nav-link">Planos</a>
+      <a href="#" class="nav-cta">Fale conosco</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <canvas id="grid-canvas"></canvas>
+
+  <div class="hero-inner">
+
+    <div class="status-bar reveal">
+      <span class="status-dot"></span>
+      Sistema ativo · <span id="exec-count">847</span> execuções agora
+    </div>
+
+    <!-- LOGO -->
+    <div class="hero-logo">
+      <svg id="logo-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+        viewBox="0 0 18333.03 8984.62"
+        style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd">
+        <defs>
+          <linearGradient id="logoGrad" gradientUnits="userSpaceOnUse" x1="1893.49" y1="6226.94" x2="16335.21" y2="6226.88">
+            <stop offset="0" style="stop-opacity:1;stop-color:#00B0CB"/>
+            <stop offset="0.560784" style="stop-opacity:1;stop-color:#00BDA4"/>
+            <stop offset="1" style="stop-opacity:1;stop-color:#00D282"/>
+          </linearGradient>
+        </defs>
+
+        <!-- FASE 1: apenas o stroke (sketch) — fill=none -->
+        <path id="logo-stroke"
+          fill="none"
+          stroke="url(#logoGrad)"
+          stroke-width="55"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          opacity="1"
+          d="M9896.38 5540.94c-20.94,94.59 -207.9,238.21 -295.79,238.21l-1029.67 0c-101.14,0 -213.59,-158.72 -196,-238.21l255.31 -1152.06c20.97,-94.6 207.92,-238.2 295.8,-238.2l1029.67 0c101.15,0 213.61,158.71 195.99,238.2l-255.31 1152.06zm-2635.1 148.64c-85.29,407.26 -61.71,514.85 132.67,760.75l145.8 184.42c164.01,207.47 295.52,276.63 695.09,276.63l1198.72 0c399.58,0 560.07,-69.16 811,-276.63l223.05 -184.42c297.38,-245.9 366.03,-353.49 451.32,-760.75l288.1 -1375.45c85.28,-407.24 61.72,-514.81 -132.68,-760.72l-145.79 -184.42c-164,-207.46 -295.53,-276.63 -695.11,-276.63l-1198.72 0c-399.57,0 -560.04,69.17 -810.98,276.63l-223.04 184.42c-297.4,245.91 -366.05,353.48 -451.34,760.72l-288.09 1375.45zm4605.66 -2017.73l-391.32 1814.86c-124.75,578.61 -165.07,555.87 237.93,1090.21 86.41,114.57 172.46,260.36 295.03,282.2 7.91,1.4 44.49,13.19 52.67,13.18l1306.2 -3.41c78.9,0 114.97,-19.33 180.46,-84.83l746.9 -743.42c187.61,-187.61 229.33,-261.49 58.08,-261.49l-1448.72 0c-289.72,0 -268.58,1.68 -209.86,-278.71l281.03 -1341.77 1082.52 0.43c176.52,0 237.37,-57.64 348.1,-168.37l610.52 -684.64c153.02,-161.04 196.49,-220.35 60.11,-221.28l-1873.65 -12.73 333.5 -1640.23c35.3,-131.79 -26.42,-157.02 -126.45,-106.82l-793.51 506.68c-444.12,256.42 -412.07,348.84 -527.01,777.82l-222.52 1062.31zm-9035.59 2389.68c-13.73,60.88 -22.36,203.94 8.82,259.38 136.51,242.56 395.94,505.84 474.68,522.73 41.18,8.83 82.19,23.67 124.69,23.64l2188.16 -1.9c124.91,-0.11 255.05,-139.44 447.43,-277.96l233.89 -168.42c230.06,-165.65 282.17,-219.4 321.48,-376.61 165.59,-662.74 318.34,-1381.28 456.47,-2050.02 34.7,-168.08 -32.94,-223.57 -178.14,-387.64l-252.79 -285.6c-220.96,-249.64 -247.4,-241.08 -700.09,-236.86l-677.65 6.36c-208.86,1.94 -598.4,2.46 -592.16,-25.37l366.7 -1635.84c23.55,-87.91 -11.61,-134.66 -105.35,-134.66l-898.62 -4.14c-114.11,0 -139.31,16.34 -168.84,126.53l-1048.68 4646.36zm1630.3 -1887.97c369.46,-1.37 810.14,-1.72 1180.88,-1.72 188.92,0 231.67,185.68 206.28,294.95l-267.63 1151.57c-21.96,94.56 -216.5,136.09 -266.05,137.19l-1037.9 23.57c-78.64,1.77 -195.07,-64.59 -171.65,-163.67 29.62,-125.29 319.66,-1441.79 356.07,-1441.89zm12854.88 -2563.38c51.75,-236.53 23.89,-322.18 -263.41,-322.18l-833.6 0 -887.71 3900.66c-48.97,215.22 23.66,261.23 232.63,261.23l626.96 0c200.26,0 294.09,-42.05 342.05,-261.23l783.07 -3578.48zm-2079.64 4311c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43zm-13847.83 0c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43z"/>
+
+        <!-- FASE 2: fill com gradiente — opacity animada por JS após sketch -->
+        <path id="logo-fill"
+          fill="url(#logoGrad)"
+          fill-rule="nonzero"
+          stroke="none"
+          opacity="0"
+          d="M9896.38 5540.94c-20.94,94.59 -207.9,238.21 -295.79,238.21l-1029.67 0c-101.14,0 -213.59,-158.72 -196,-238.21l255.31 -1152.06c20.97,-94.6 207.92,-238.2 295.8,-238.2l1029.67 0c101.15,0 213.61,158.71 195.99,238.2l-255.31 1152.06zm-2635.1 148.64c-85.29,407.26 -61.71,514.85 132.67,760.75l145.8 184.42c164.01,207.47 295.52,276.63 695.09,276.63l1198.72 0c399.58,0 560.07,-69.16 811,-276.63l223.05 -184.42c297.38,-245.9 366.03,-353.49 451.32,-760.75l288.1 -1375.45c85.28,-407.24 61.72,-514.81 -132.68,-760.72l-145.79 -184.42c-164,-207.46 -295.53,-276.63 -695.11,-276.63l-1198.72 0c-399.57,0 -560.04,69.17 -810.98,276.63l-223.04 184.42c-297.4,245.91 -366.05,353.48 -451.34,760.72l-288.09 1375.45zm4605.66 -2017.73l-391.32 1814.86c-124.75,578.61 -165.07,555.87 237.93,1090.21 86.41,114.57 172.46,260.36 295.03,282.2 7.91,1.4 44.49,13.19 52.67,13.18l1306.2 -3.41c78.9,0 114.97,-19.33 180.46,-84.83l746.9 -743.42c187.61,-187.61 229.33,-261.49 58.08,-261.49l-1448.72 0c-289.72,0 -268.58,1.68 -209.86,-278.71l281.03 -1341.77 1082.52 0.43c176.52,0 237.37,-57.64 348.1,-168.37l610.52 -684.64c153.02,-161.04 196.49,-220.35 60.11,-221.28l-1873.65 -12.73 333.5 -1640.23c35.3,-131.79 -26.42,-157.02 -126.45,-106.82l-793.51 506.68c-444.12,256.42 -412.07,348.84 -527.01,777.82l-222.52 1062.31zm-9035.59 2389.68c-13.73,60.88 -22.36,203.94 8.82,259.38 136.51,242.56 395.94,505.84 474.68,522.73 41.18,8.83 82.19,23.67 124.69,23.64l2188.16 -1.9c124.91,-0.11 255.05,-139.44 447.43,-277.96l233.89 -168.42c230.06,-165.65 282.17,-219.4 321.48,-376.61 165.59,-662.74 318.34,-1381.28 456.47,-2050.02 34.7,-168.08 -32.94,-223.57 -178.14,-387.64l-252.79 -285.6c-220.96,-249.64 -247.4,-241.08 -700.09,-236.86l-677.65 6.36c-208.86,1.94 -598.4,2.46 -592.16,-25.37l366.7 -1635.84c23.55,-87.91 -11.61,-134.66 -105.35,-134.66l-898.62 -4.14c-114.11,0 -139.31,16.34 -168.84,126.53l-1048.68 4646.36zm1630.3 -1887.97c369.46,-1.37 810.14,-1.72 1180.88,-1.72 188.92,0 231.67,185.68 206.28,294.95l-267.63 1151.57c-21.96,94.56 -216.5,136.09 -266.05,137.19l-1037.9 23.57c-78.64,1.77 -195.07,-64.59 -171.65,-163.67 29.62,-125.29 319.66,-1441.79 356.07,-1441.89zm12854.88 -2563.38c51.75,-236.53 23.89,-322.18 -263.41,-322.18l-833.6 0 -887.71 3900.66c-48.97,215.22 23.66,261.23 232.63,261.23l626.96 0c200.26,0 294.09,-42.05 342.05,-261.23l783.07 -3578.48zm-2079.64 4311c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43zm-13847.83 0c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43z"/>
+      </svg>
+    </div>
+
+        <!-- HEADLINE COM TYPEWRITER -->
+    <h1 class="hero-headline reveal" style="transition-delay:.12s">
+      <span class="headline-static">Sua empresa não nasceu</span>
+      <span class="typewriter-line"><span class="headline-para">para ser </span><span id="typewriter-word" class="typewriter-word"></span><span class="typewriter-cursor">|</span></span>
+    </h1>
+
+    <div class="hero-sub reveal" style="transition-delay:.22s">
+      <p>
+        Assistentes virtuais com <strong>Inteligência Artificial</strong> treinados para operar como parte da sua equipe. Do primeiro contato ao fechamento da venda, <strong>sem pausa, sem falhas e 24 horas por dia!</strong>
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">
+          Ativar agora
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#arch" class="btn-secondary">Ver arquitetura</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-hint" id="scrollHint">
+    <div class="scroll-hint-line"></div>
+    scroll
+    <div class="scroll-hint-arrow">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MARQUEE ═══════════ -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- items duplicated by JS -->
+    <span class="marquee-item"><span class="marquee-sep">◆</span> <strong>IA não dorme</strong> <span class="marquee-sep">◆</span> Autonomia Operacional <span class="marquee-sep">◆</span> <strong>Automatize ou seja automatizado</strong> <span class="marquee-sep">◆</span> Execução contínua 24/7 <span class="marquee-sep">◆</span> <strong>Zero intervenção humana</strong> <span class="marquee-sep">◆</span> O futuro executa sozinho <span class="marquee-sep">◆</span> <strong>Infraestrutura que pensa</strong> <span class="marquee-sep">◆</span> Elimine fricção operacional</span>
+    <span class="marquee-item"><span class="marquee-sep">◆</span> <strong>IA não dorme</strong> <span class="marquee-sep">◆</span> Autonomia Operacional <span class="marquee-sep">◆</span> <strong>Automatize ou seja automatizado</strong> <span class="marquee-sep">◆</span> Execução contínua 24/7 <span class="marquee-sep">◆</span> <strong>Zero intervenção humana</strong> <span class="marquee-sep">◆</span> O futuro executa sozinho <span class="marquee-sep">◆</span> <strong>Infraestrutura que pensa</strong> <span class="marquee-sep">◆</span> Elimine fricção operacional</span>
+  </div>
+</div>
+
+<!-- ═══════════ IMPACT ═══════════ -->
+<section id="impact">
+  <div class="impact-grid">
+    <div class="impact-cell reveal">
+      <div class="impact-index">01 / 04</div>
+      <div class="impact-number" data-target="12000" data-prefix="+">0</div>
+      <div class="impact-label">Execuções diárias</div>
+      <div class="impact-desc">Tarefas processadas automaticamente, sem parar.</div>
+    </div>
+    <div class="impact-cell reveal" style="transition-delay:.08s">
+      <div class="impact-index">02 / 04</div>
+      <div class="impact-number" data-target="68" data-prefix="-" data-suffix="%">0</div>
+      <div class="impact-label">Tempo operacional</div>
+      <div class="impact-desc">Redução média em processos manuais recorrentes.</div>
+    </div>
+    <div class="impact-cell reveal" style="transition-delay:.16s">
+      <div class="impact-index">03 / 04</div>
+      <div class="impact-number" data-target="0" data-label-override="ZERO">0</div>
+      <div class="impact-label">Intervenção humana</div>
+      <div class="impact-desc">Fluxos completos gerenciados de ponta a ponta pela IA.</div>
+    </div>
+    <div class="impact-cell reveal" style="transition-delay:.24s">
+      <div class="impact-index">04 / 04</div>
+      <div class="impact-number" data-static="24/7">24/7</div>
+      <div class="impact-label">Processamento ativo</div>
+      <div class="impact-desc">Operação ininterrupta em qualquer fuso horário.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURES ═══════════ -->
+<section id="features" class="section">
+  <div class="section-inner">
+
+    <div class="features-left reveal-left">
+      <div class="label">Capacidades</div>
+      <div class="display-title">
+        Feito para<br>
+        <span class="shatter-container"><span class="shatter-original" id="shatter-word">destruir</span></span> <span class="green">o manual.</span>
+      </div>
+      <p style="margin-top:24px">Cada recurso foi construído para dominar um ponto de fricção operacional. Juntos, formam uma infraestrutura autônoma de classe enterprise.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feat-card reveal" style="transition-delay:.04s">
+        <div class="feat-number">001</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="feat-title">Execução Autônoma</div>
+        <div class="feat-desc">A .bot! opera sem supervisão. Detecta gatilhos, processa contexto e executa ações complexas em milissegundos.</div>
+      </div>
+
+      <div class="feat-card reveal" style="transition-delay:.08s">
+        <div class="feat-number">002</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div class="feat-title">Integração Total</div>
+        <div class="feat-desc">+200 conectores nativos. Seus sistemas falam entre si em tempo real — sem ETLs frágeis, sem middleware desnecessário.</div>
+      </div>
+
+      <div class="feat-card reveal" style="transition-delay:.12s">
+        <div class="feat-number">003</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="feat-title">Escala Instantânea</div>
+        <div class="feat-desc">De 100 para 10 milhões de execuções sem reconfiguração. A infraestrutura expande automaticamente com a demanda.</div>
+      </div>
+
+      <div class="feat-card reveal" style="transition-delay:.16s">
+        <div class="feat-number">004</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="feat-title">Monitoramento Contínuo</div>
+        <div class="feat-desc">Telemetria em tempo real de cada execução. Anomalias são detectadas e corrigidas antes de impactar sua operação.</div>
+      </div>
+
+      <div class="feat-card reveal" style="transition-delay:.20s">
+        <div class="feat-number">005</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M22 2 12 12"/></svg>
+        </div>
+        <div class="feat-title">Aprendizado Adaptativo</div>
+        <div class="feat-desc">O modelo aprende com cada execução. Quanto mais opera, mais preciso e eficiente se torna — sem retreinamento manual.</div>
+      </div>
+
+      <div class="feat-card reveal" style="transition-delay:.24s">
+        <div class="feat-number">006</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feat-title">Controle Absoluto</div>
+        <div class="feat-desc">SSO, RBAC granular, logs imutáveis e conformidade SOC 2. Autonomia total sem abrir mão de governança.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ARCHITECTURE ═══════════ -->
+<section id="arch" class="section">
+  <div class="section-inner">
+    <div class="arch-header reveal">
+      <div class="label" style="justify-content:center">Arquitetura</div>
+      <div class="display-title">
+        Como a IA<br><span class="green">executa.</span>
+      </div>
+      <p style="margin-top:16px;color:rgba(255,255,255,0.4);font-size:.85rem;font-weight:300">
+        Pipeline determinístico de quatro camadas. Cada dado que entra é transformado em ação real.
+      </p>
+    </div>
+
+    <div class="arch-flow reveal" style="transition-delay:.1s">
+
+      <!-- CARD 01 — Entrada de Dados -->
+      <div class="arch-step">
+        <div class="arch-card-visual" id="avis-1">
+          <!-- Rede neural / nós conectados -->
+          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ng1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="200" height="120" fill="url(#ng1)"/>
+            <!-- Linhas de conexão -->
+            <line x1="30" y1="60" x2="80" y2="30" stroke="#00ff88" stroke-width="0.5" opacity="0.3"/>
+            <line x1="30" y1="60" x2="80" y2="60" stroke="#00ff88" stroke-width="0.5" opacity="0.3"/>
+            <line x1="30" y1="60" x2="80" y2="90" stroke="#00ff88" stroke-width="0.5" opacity="0.3"/>
+            <line x1="80" y1="30" x2="130" y2="20" stroke="#00ff88" stroke-width="0.5" opacity="0.25"/>
+            <line x1="80" y1="30" x2="130" y2="50" stroke="#00ff88" stroke-width="0.5" opacity="0.25"/>
+            <line x1="80" y1="60" x2="130" y2="50" stroke="#00ff88" stroke-width="0.5" opacity="0.25"/>
+            <line x1="80" y1="60" x2="130" y2="70" stroke="#00ff88" stroke-width="0.5" opacity="0.25"/>
+            <line x1="80" y1="90" x2="130" y2="70" stroke="#00ff88" stroke-width="0.5" opacity="0.25"/>
+            <line x1="80" y1="90" x2="130" y2="100" stroke="#00ff88" stroke-width="0.5" opacity="0.25"/>
+            <line x1="130" y1="20"  x2="175" y2="40" stroke="#00ff88" stroke-width="0.5" opacity="0.2"/>
+            <line x1="130" y1="50"  x2="175" y2="40" stroke="#00ff88" stroke-width="0.5" opacity="0.2"/>
+            <line x1="130" y1="70"  x2="175" y2="60" stroke="#00ff88" stroke-width="0.5" opacity="0.2"/>
+            <line x1="130" y1="100" x2="175" y2="80" stroke="#00ff88" stroke-width="0.5" opacity="0.2"/>
+            <!-- Nós -->
+            <circle cx="30"  cy="60"  r="5" fill="#00ff88" opacity="0.9"/>
+            <circle cx="80"  cy="30"  r="3.5" fill="#00bda4" opacity="0.8"/>
+            <circle cx="80"  cy="60"  r="3.5" fill="#00bda4" opacity="0.8"/>
+            <circle cx="80"  cy="90"  r="3.5" fill="#00bda4" opacity="0.8"/>
+            <circle cx="130" cy="20"  r="2.5" fill="#00b0cb" opacity="0.7"/>
+            <circle cx="130" cy="50"  r="2.5" fill="#00b0cb" opacity="0.7"/>
+            <circle cx="130" cy="70"  r="2.5" fill="#00b0cb" opacity="0.7"/>
+            <circle cx="130" cy="100" r="2.5" fill="#00b0cb" opacity="0.7"/>
+            <circle cx="175" cy="40"  r="4" fill="#00ff88" opacity="0.85"/>
+            <circle cx="175" cy="60"  r="4" fill="#00ff88" opacity="0.85"/>
+            <circle cx="175" cy="80"  r="4" fill="#00ff88" opacity="0.85"/>
+            <!-- Pulso animado no nó de entrada -->
+            <circle cx="30" cy="60" r="10" fill="none" stroke="#00ff88" stroke-width="0.8" opacity="0">
+              <animate attributeName="r" values="5;18" dur="1.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="arch-step-num">01</div>
+        <div class="arch-step-title">Entrada de Dados</div>
+        <div class="arch-step-desc">Webhooks, APIs, eventos e integrações nativas alimentam o pipeline em tempo real com contexto estruturado.</div>
+        <span class="arch-step-tag">Camada de Ingestão</span>
+      </div>
+
+      <!-- CARD 02 — Processamento IA (destaque) -->
+      <div class="arch-step">
+        <div class="arch-card-visual" id="avis-2">
+          <!-- Cérebro digital / circuito -->
+          <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ng2" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#00ff88" stop-opacity="0.12"/>
+                <stop offset="100%" stop-color="#00b0cb" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="glow2">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <rect width="320" height="140" fill="url(#ng2)"/>
+            <!-- Grade de circuito -->
+            <g opacity="0.12" stroke="#00ff88" stroke-width="0.5" fill="none">
+              <line x1="0" y1="35" x2="320" y2="35"/>
+              <line x1="0" y1="70" x2="320" y2="70"/>
+              <line x1="0" y1="105" x2="320" y2="105"/>
+              <line x1="53" y1="0" x2="53" y2="140"/>
+              <line x1="106" y1="0" x2="106" y2="140"/>
+              <line x1="160" y1="0" x2="160" y2="140"/>
+              <line x1="213" y1="0" x2="213" y2="140"/>
+              <line x1="267" y1="0" x2="267" y2="140"/>
+            </g>
+            <!-- Chips/blocos -->
+            <rect x="130" y="45" width="60" height="50" rx="4" fill="none" stroke="#00ff88" stroke-width="1.2" filter="url(#glow2)"/>
+            <rect x="138" y="53" width="44" height="34" rx="2" fill="rgba(0,255,136,0.08)"/>
+            <text x="160" y="74" text-anchor="middle" font-family="monospace" font-size="8" fill="#00ff88" opacity="0.9">AI</text>
+            <!-- Linhas de dados chegando -->
+            <line x1="0" y1="60" x2="130" y2="60" stroke="#00ff88" stroke-width="1" opacity="0.5">
+              <animate attributeName="stroke-dashoffset" values="130;0" dur="1.5s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-dasharray" values="8 4" dur="0.1s" fill="freeze"/>
+            </line>
+            <line x1="0" y1="75" x2="130" y2="75" stroke="#00bda4" stroke-width="0.8" opacity="0.4">
+              <animate attributeName="stroke-dashoffset" values="130;0" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-dasharray" values="6 5" dur="0.1s" fill="freeze"/>
+            </line>
+            <!-- Linhas saindo -->
+            <line x1="190" y1="60" x2="320" y2="60" stroke="#00ff88" stroke-width="1" opacity="0.5">
+              <animate attributeName="stroke-dashoffset" values="130;0" dur="1.2s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-dasharray" values="8 4" dur="0.1s" fill="freeze"/>
+            </line>
+            <line x1="190" y1="75" x2="320" y2="75" stroke="#00bda4" stroke-width="0.8" opacity="0.4">
+              <animate attributeName="stroke-dashoffset" values="130;0" dur="1.8s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-dasharray" values="6 5" dur="0.1s" fill="freeze"/>
+            </line>
+            <!-- Nós de conexão -->
+            <circle cx="130" cy="60" r="3" fill="#00ff88" opacity="0.9"/>
+            <circle cx="130" cy="75" r="3" fill="#00bda4" opacity="0.8"/>
+            <circle cx="190" cy="60" r="3" fill="#00ff88" opacity="0.9"/>
+            <circle cx="190" cy="75" r="3" fill="#00bda4" opacity="0.8"/>
+            <!-- Pulse no chip -->
+            <rect x="130" y="45" width="60" height="50" rx="4" fill="none" stroke="#00ff88" stroke-width="0.5" opacity="0">
+              <animate attributeName="opacity" values="0.8;0" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="x" values="130;120" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="45;38" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="width" values="60;80" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="height" values="50;64" dur="2s" repeatCount="indefinite"/>
+            </rect>
+          </svg>
+        </div>
+        <div class="arch-step-num">02</div>
+        <div class="arch-step-title">Processamento IA</div>
+        <div class="arch-step-desc">O modelo analisa contexto, determina intenção e seleciona o plano de execução ótimo — em &lt;12ms. Nenhuma intervenção humana necessária para decidir o próximo passo.</div>
+        <span class="arch-step-tag">Camada de Inferência</span>
+      </div>
+
+      <!-- CARD 03 — Execução -->
+      <div class="arch-step">
+        <div class="arch-card-visual" id="avis-3">
+          <!-- Braço robótico / engrenagens -->
+          <svg viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ng3" cx="30%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#00bda4" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="220" height="120" fill="url(#ng3)"/>
+            <!-- Engrenagem grande -->
+            <g transform="translate(60,60)" opacity="0.7">
+              <animateTransform attributeName="transform" type="rotate" from="0 60 60" to="360 60 60" dur="12s" repeatCount="indefinite" additive="sum"/>
+              <circle cx="0" cy="0" r="22" fill="none" stroke="#00ff88" stroke-width="1.5"/>
+              <circle cx="0" cy="0" r="8"  fill="rgba(0,255,136,0.1)" stroke="#00ff88" stroke-width="1"/>
+              <rect x="-3" y="-28" width="6" height="8" rx="1" fill="#00ff88"/>
+              <rect x="-3" y="20"  width="6" height="8" rx="1" fill="#00ff88"/>
+              <rect x="-28" y="-3" width="8" height="6" rx="1" fill="#00ff88"/>
+              <rect x="20"  y="-3" width="8" height="6" rx="1" fill="#00ff88"/>
+              <rect x="-21" y="-21" width="6" height="6" rx="1" fill="#00ff88" transform="rotate(45)"/>
+              <rect x="15"  y="-21" width="6" height="6" rx="1" fill="#00ff88" transform="rotate(45)"/>
+            </g>
+            <!-- Engrenagem menor -->
+            <g transform="translate(118,42)" opacity="0.55">
+              <animateTransform attributeName="transform" type="rotate" from="0 118 42" to="-360 118 42" dur="7s" repeatCount="indefinite" additive="sum"/>
+              <circle cx="0" cy="0" r="13" fill="none" stroke="#00bda4" stroke-width="1"/>
+              <circle cx="0" cy="0" r="5"  fill="rgba(0,189,164,0.1)" stroke="#00bda4" stroke-width="0.8"/>
+              <rect x="-2" y="-17" width="4" height="6" rx="1" fill="#00bda4"/>
+              <rect x="-2" y="11"  width="4" height="6" rx="1" fill="#00bda4"/>
+              <rect x="-17" y="-2" width="6" height="4" rx="1" fill="#00bda4"/>
+              <rect x="11"  y="-2" width="6" height="4" rx="1" fill="#00bda4"/>
+            </g>
+            <!-- Workers paralelos -->
+            <rect x="155" y="20"  width="40" height="14" rx="3" fill="none" stroke="#00ff88" stroke-width="0.8" opacity="0.6"/>
+            <rect x="155" y="42"  width="40" height="14" rx="3" fill="none" stroke="#00ff88" stroke-width="0.8" opacity="0.5"/>
+            <rect x="155" y="64"  width="40" height="14" rx="3" fill="none" stroke="#00ff88" stroke-width="0.8" opacity="0.4"/>
+            <rect x="155" y="86"  width="40" height="14" rx="3" fill="none" stroke="#00ff88" stroke-width="0.8" opacity="0.3"/>
+            <!-- Barra de progresso animada -->
+            <rect x="158" y="23"  rx="2" height="8" fill="#00ff88" opacity="0.7">
+              <animate attributeName="width" values="0;32;32" dur="2.1s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="158" y="45"  rx="2" height="8" fill="#00bda4" opacity="0.6">
+              <animate attributeName="width" values="0;28;28" dur="1.7s" begin="0.3s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="158" y="67"  rx="2" height="8" fill="#00b0cb" opacity="0.5">
+              <animate attributeName="width" values="0;34;34" dur="2.4s" begin="0.6s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="158" y="89"  rx="2" height="8" fill="#00ff88" opacity="0.4">
+              <animate attributeName="width" values="0;20;20" dur="1.9s" begin="0.9s" repeatCount="indefinite"/>
+            </rect>
+          </svg>
+        </div>
+        <div class="arch-step-num">03</div>
+        <div class="arch-step-title">Execução</div>
+        <div class="arch-step-desc">Ações distribuídas em paralelo através de workers resilientes. Retries automáticos, fallbacks e garantia de entrega em qualquer escala.</div>
+        <span class="arch-step-tag">Camada de Execução</span>
+      </div>
+
+      <!-- CARD 04 — Monitoramento -->
+      <div class="arch-step">
+        <div class="arch-card-visual" id="avis-4">
+          <!-- Gráfico de telemetria / olho de IA -->
+          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ng4" cx="70%" cy="50%" r="55%">
+                <stop offset="0%" stop-color="#00b0cb" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#00ff88" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="200" height="120" fill="url(#ng4)"/>
+            <!-- Eixos -->
+            <line x1="20" y1="95" x2="185" y2="95" stroke="#00ff88" stroke-width="0.5" opacity="0.3"/>
+            <line x1="20" y1="20" x2="20"  y2="95" stroke="#00ff88" stroke-width="0.5" opacity="0.3"/>
+            <!-- Linha de telemetria animada -->
+            <polyline points="20,75 45,60 65,70 85,35 100,50 120,30 140,45 160,25 185,40"
+              fill="none" stroke="#00ff88" stroke-width="1.5" opacity="0.8"
+              stroke-dasharray="300" stroke-dashoffset="300">
+              <animate attributeName="stroke-dashoffset" values="300;0" dur="2.5s" repeatCount="indefinite"/>
+            </polyline>
+            <!-- Área sob a curva -->
+            <polyline points="20,75 45,60 65,70 85,35 100,50 120,30 140,45 160,25 185,40 185,95 20,95"
+              fill="rgba(0,255,136,0.05)" stroke="none"/>
+            <!-- Ponto de scan -->
+            <circle r="4" fill="#00ff88" opacity="0.9">
+              <animateMotion dur="2.5s" repeatCount="indefinite"
+                path="M20,75 C30,65 55,65 65,70 S80,30 85,35 S110,50 120,30 S145,45 160,25 S180,40 185,40"/>
+              <animate attributeName="opacity" values="1;0.4;1" dur="0.5s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Anomalia detectada -->
+            <circle cx="85" cy="35" r="8" fill="none" stroke="#00ff88" stroke-width="0.8" opacity="0">
+              <animate attributeName="r" values="4;14" dur="1.5s" begin="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.8;0" dur="1.5s" begin="2s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="arch-step-num">04</div>
+        <div class="arch-step-title">Monitoramento</div>
+        <div class="arch-step-desc">Feedback loop fechado. Cada resultado alimenta o modelo para otimização contínua e detecção de anomalias.</div>
+        <span class="arch-step-tag">Camada de Observabilidade</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRICING ═══════════ -->
+<section id="pricing" class="section" style="background:var(--surface)">
+  <div class="section-inner">
+    <div class="arch-header reveal">
+      <div class="label" style="justify-content:center">Infraestrutura</div>
+      <div class="display-title">Escolha seu<br><span class="green">nível de poder.</span></div>
+      <p style="margin-top:16px;color:var(--sub);font-size:.9rem;font-weight:300">
+        Sem contratos anuais obrigatórios. Comece agora, escale quando precisar.
+      </p>
+    </div>
+
+    <div class="pricing-grid reveal" style="transition-delay:.1s">
+
+      <!-- Starter -->
+      <div class="plan">
+        <div class="plan-tier">Starter</div>
+        <div class="plan-price-row">
+          <span class="plan-curr">R$</span>
+          <span class="plan-amount">997</span>
+          <span class="plan-period">/mês</span>
+        </div>
+        <div class="plan-tagline">Ideal para começar · sem burocracia</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>1 canal de atendimento</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Até 1.000 conversas/mês</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>IA com FAQ treinada</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dashboard básico</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Suporte por e-mail</li>
+          <li class="off"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>CRM integrado</li>
+        </ul>
+        <a href="#" class="plan-btn plan-btn-outline">Começar agora</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="plan featured">
+        <div class="plan-badge">⚡ Mais escolhido</div>
+        <div class="plan-tier">Growth</div>
+        <div class="plan-price-row">
+          <span class="plan-curr">R$</span>
+          <span class="plan-amount">2.497</span>
+          <span class="plan-period">/mês</span>
+        </div>
+        <div class="plan-tagline">Escale sem limites · suporte total</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>3 canais de atendimento</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Conversas ilimitadas</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>IA avançada com CRM</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dashboard completo</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Suporte prioritário 24/7</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Relatórios mensais</li>
+        </ul>
+        <a href="#" class="plan-btn plan-btn-solid">Começar agora</a>
+      </div>
+
+      <!-- Custom -->
+      <div class="plan">
+        <div class="plan-tier">Custom</div>
+        <div class="plan-price-row" style="flex-direction:column;align-items:center;justify-content:center;gap:0">
+          <span class="plan-amount" style="font-size:2.2rem;letter-spacing:0;line-height:1.1;text-align:center">Sob<br>consulta</span>
+        </div>
+        <div class="plan-tagline">Totalmente personalizado · SLA garantido</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-list">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Canais ilimitados</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>IA 100% personalizada</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Integrações sob medida</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>SLA garantido</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Gerente de conta dedicado</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Onboarding presencial</li>
+        </ul>
+        <a href="#" class="plan-btn plan-btn-outline">Falar com vendas</a>
+      </div>
+
+    </div>
+
+    <!-- Nota de garantia abaixo dos planos -->
+    <div class="reveal pricing-guarantee" style="transition-delay:.2s">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Sem contratos anuais
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section id="cta-final">
+  <canvas id="cta-canvas"></canvas>
+  <div class="container" style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
+    <div class="reveal">
+      <div class="cta-eyebrow">// próximo passo</div>
+      <div class="cta-title">
+        Pare de<br>
+        operar<br>
+        <span class="green">manualmente.</span>
+      </div>
+      <a href="#" class="btn-primary" style="font-size:.82rem;padding:18px 56px">
+        Automatizar agora
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-inner">
+
+    <!-- Logo + tagline -->
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18333.03 8984.62"
+          style="width:56px;height:auto;display:block;fill-rule:evenodd;clip-rule:evenodd">
+          <path fill="#FAFAFA" fill-rule="nonzero" d="M9896.38 5540.94c-20.94,94.59 -207.9,238.21 -295.79,238.21l-1029.67 0c-101.14,0 -213.59,-158.72 -196,-238.21l255.31 -1152.06c20.97,-94.6 207.92,-238.2 295.8,-238.2l1029.67 0c101.15,0 213.61,158.71 195.99,238.2l-255.31 1152.06zm-2635.1 148.64c-85.29,407.26 -61.71,514.85 132.67,760.75l145.8 184.42c164.01,207.47 295.52,276.63 695.09,276.63l1198.72 0c399.58,0 560.07,-69.16 811,-276.63l223.05 -184.42c297.38,-245.9 366.03,-353.49 451.32,-760.75l288.1 -1375.45c85.28,-407.24 61.72,-514.81 -132.68,-760.72l-145.79 -184.42c-164,-207.46 -295.53,-276.63 -695.11,-276.63l-1198.72 0c-399.57,0 -560.04,69.17 -810.98,276.63l-223.04 184.42c-297.4,245.91 -366.05,353.48 -451.34,760.72l-288.09 1375.45zm4605.66 -2017.73l-391.32 1814.86c-124.75,578.61 -165.07,555.87 237.93,1090.21 86.41,114.57 172.46,260.36 295.03,282.2 7.91,1.4 44.49,13.19 52.67,13.18l1306.2 -3.41c78.9,0 114.97,-19.33 180.46,-84.83l746.9 -743.42c187.61,-187.61 229.33,-261.49 58.08,-261.49l-1448.72 0c-289.72,0 -268.58,1.68 -209.86,-278.71l281.03 -1341.77 1082.52 0.43c176.52,0 237.37,-57.64 348.1,-168.37l610.52 -684.64c153.02,-161.04 196.49,-220.35 60.11,-221.28l-1873.65 -12.73 333.5 -1640.23c35.3,-131.79 -26.42,-157.02 -126.45,-106.82l-793.51 506.68c-444.12,256.42 -412.07,348.84 -527.01,777.82l-222.52 1062.31zm-9035.59 2389.68c-13.73,60.88 -22.36,203.94 8.82,259.38 136.51,242.56 395.94,505.84 474.68,522.73 41.18,8.83 82.19,23.67 124.69,23.64l2188.16 -1.9c124.91,-0.11 255.05,-139.44 447.43,-277.96l233.89 -168.42c230.06,-165.65 282.17,-219.4 321.48,-376.61 165.59,-662.74 318.34,-1381.28 456.47,-2050.02 34.7,-168.08 -32.94,-223.57 -178.14,-387.64l-252.79 -285.6c-220.96,-249.64 -247.4,-241.08 -700.09,-236.86l-677.65 6.36c-208.86,1.94 -598.4,2.46 -592.16,-25.37l366.7 -1635.84c23.55,-87.91 -11.61,-134.66 -105.35,-134.66l-898.62 -4.14c-114.11,0 -139.31,16.34 -168.84,126.53l-1048.68 4646.36zm1630.3 -1887.97c369.46,-1.37 810.14,-1.72 1180.88,-1.72 188.92,0 231.67,185.68 206.28,294.95l-267.63 1151.57c-21.96,94.56 -216.5,136.09 -266.05,137.19l-1037.9 23.57c-78.64,1.77 -195.07,-64.59 -171.65,-163.67 29.62,-125.29 319.66,-1441.79 356.07,-1441.89zm12854.88 -2563.38c51.75,-236.53 23.89,-322.18 -263.41,-322.18l-833.6 0 -887.71 3900.66c-48.97,215.22 23.66,261.23 232.63,261.23l626.96 0c200.26,0 294.09,-42.05 342.05,-261.23l783.07 -3578.48zm-2079.64 4311c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43zm-13847.83 0c17.7,-32.02 39.4,-59.02 66.26,-80.76 26.86,-21.73 58.86,-38.2 95.73,-49.03 36.85,-10.83 78.55,-16.03 155.85,-18.64 77.29,-2.6 190.18,-2.6 296.13,-2.51 105.95,0.1 204.95,0.3 277.26,6.27 72.31,5.97 117.94,17.72 150.74,36.05 32.79,18.35 52.77,43.3 64.41,79.91 11.64,36.61 14.93,84.9 10.82,141.87 -4.11,56.98 -15.61,122.62 -29.45,199.61 -13.85,77 -30.02,165.32 -49.78,249.02 -19.77,83.7 -43.14,162.76 -67.61,216.13 -24.48,53.37 -50.07,81.05 -77.54,101.29 -27.47,20.25 -56.83,33.08 -129.12,41.63 -72.3,8.55 -187.56,12.83 -308.2,14.96 -120.64,2.14 -246.66,2.14 -328.4,-0.11 -81.75,-2.25 -119.22,-6.73 -153.93,-20.05 -34.72,-13.31 -66.7,-35.45 -87.43,-67.48 -20.74,-32.03 -30.26,-73.94 -25.86,-151.37 4.39,-77.43 22.68,-190.38 40.85,-294.76 18.16,-104.37 36.18,-200.17 52.04,-266.59 15.85,-66.41 29.54,-103.42 47.23,-135.43z"/>
+        </svg>
+      </a>
+      <p class="footer-tagline">Autonomia Operacional com Inteligência Artificial</p>
+    </div>
+
+    <!-- Links -->
+    <ul class="footer-links">
+      <li><a href="#">Produto</a></li>
+      <li><a href="#">Integrações</a></li>
+      <li><a href="#">Documentação</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Privacidade</a></li>
+      <li><a href="#">Termos de Uso</a></li>
+    </ul>
+
+    <!-- Divisor -->
+    <div class="footer-divider"></div>
+
+    <!-- Linha legal centralizada -->
+    <div class="footer-legal">
+      <span>Powered by <strong>.bot!</strong></span>
+      <span class="footer-dot">·</span>
+      <span>© 2025 .bot! Inc.® Todos os direitos reservados.</span>
+      <span class="footer-dot">·</span>
+      <span>CNPJ 00.000.000/0001-00</span>
+    </div>
+    <div class="footer-sub">
+      <span>As marcas .bot! e o logotipo são propriedade exclusiva da .bot! Inc.®</span>
+    </div>
+
+  </div>
+</footer>
+
+
+
+  <script src="script.js"></script>
+</body>
